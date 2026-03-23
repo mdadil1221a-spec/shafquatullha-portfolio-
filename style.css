@@ -1,0 +1,236 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', serif; /* clean serif style heading ke liye */
+    background: linear-gradient(to right, #616161, #212121); /* Video jaisa grey gradient */
+    color: white;
+    scroll-behavior: smooth; /* smooth scrolling experience */
+}
+
+/* Nav */
+header {
+    background-color: #1a1a1a;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-left h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.hero-left h3 {
+    margin-bottom: 10px;
+}
+
+.tagline {
+    font-style: italic;
+    color: lightgrey;
+    margin-bottom: 20px;
+}
+
+.hero-left p {
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.hero-buttons button {
+    padding: 10px 20px;
+    margin-right: 15px;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 15px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* Stacking Container Styling */
+.avatar-container {
+    position: relative; /* important: stacking ke liye position relative honi chahiye */
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
+}
+
+.hero-avatar {
+    position: absolute; /* stack images in the same spot */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; /* circular avatar */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* fade transition */
+}
+
+/* Normal image is visible, Samurai is hidden */
+.main-avatar {
+    opacity: 1;
+    z-index: 2; /* ye image upar rahegi */
+}
+
+.samurai-avatar {
+    opacity: 0;
+    z-index: 1; /* ye image peeche rahegi */
+    transform: scale(1.1); /* samurai thoda badha hai starting mein */
+}
+
+/* State changes: Samurai fades in, Original fades out */
+.avatar-container.show-samurai .main-avatar {
+    opacity: 0;
+    z-index: 1;
+}
+
+.avatar-container.show-samurai .samurai-avatar {
+    opacity: 1;
+    z-index: 2;
+    transform: scale(1); /* samurai regular size par aa jata hai */
+}
+
+/* Card Styling (Flip interaction) */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.card {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.flip-card {
+    background-color: transparent;
+    perspective: 1000px; /* 3D effect ke liye */
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+/* Skill/Blog cards (Non-flip) */
+.blog-card {
+    cursor: pointer;
+}
+
+.empty-project-card .flip-card-front {
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+}
+
+.highlight {
+    background-color: #1e3a8a; /* MSU AeroVision ke liye main focus color */
+}
+
+/* General containers */
+section {
+    padding: 50px 0;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+h2 {
+    margin-bottom: 30px;
+}
